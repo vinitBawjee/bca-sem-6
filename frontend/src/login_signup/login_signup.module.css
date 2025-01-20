@@ -1,0 +1,60 @@
+ul {
+    padding: 0 !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.main_body {
+    height: 100vh;
+}
+
+.login_form {
+    width: 400px;
+    height: 500px;
+}
+
+.login_form_field {
+    height: 100px;
+}
+
+.login_link {
+    width: 400px;
+}
+
+.signup_user_form {
+    width: 600px;
+    height: 550px;
+}
+
+.signup_user_form_field {
+    height: 100px;
+}
+
+.signup_user_form_field_address {
+    height: 180px;
+}
+
+.signup_form {
+    width: 600px;
+    height: 650px;
+}
+
+.signup_form_field {
+    height: 100px;
+}
+
+.signup_form_field_address {
+    height: 180px;
+}
+
+.signup_link {
+    width: 600px;
+}
+
+.custom_file_upload {
+    width: 90% !important;
+    margin: 0 auto;
+    display: block;
+}
