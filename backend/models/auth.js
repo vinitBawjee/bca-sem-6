@@ -1,33 +1,26 @@
 const mongoose = require("mongoose");
 
-// Schema for User Signup
 const signup_user = new mongoose.Schema({
     full_name: { type: String, required: true },
+    user_name: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
+    address: { type: String, required: true },
+    phone_number: { type: Number, required: true },
+    dob: { type: Date, required: true },
+    profile_photo: { type: String, required: true },
     password: { type: String, required: true },
-    phone_number: { type: String, required: true },
-    address: {
-        street: { type: String, required: true },
-        city: { type: String, required: true },
-        state: { type: String, required: true },
-        zip: { type: String, required: true },
-    },
 }, { timestamps: true });
 
 // Schema for Seller Signup
 const signup_seller = new mongoose.Schema({
-    business_name: { type: String, required: true },
     full_name: { type: String, required: true },
+    user_name: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
+    address: { type: String, required: true },
+    phone_number: { type: Number, required: true },
+    dob: { type: Date, required: true },
+    profile_photo: { type: String, required: true },
     password: { type: String, required: true },
-    phone_number: { type: String, required: true },
-    business_address: {
-        street: { type: String, required: true },
-        city: { type: String, required: true },
-        state: { type: String, required: true },
-        zip: { type: String, required: true },
-    },
-    gst_number: { type: String, required: true },
 }, { timestamps: true });
 
 module.exports = {

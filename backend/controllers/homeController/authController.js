@@ -7,21 +7,30 @@ const jwt = require("jsonwebtoken");
 // User Signup
 exports.signupUser = async (req, res) => {
     try {
-        const { full_name, email, password, phone_number, address } = req.body;
+        const { full_name, user_name, email, password, phone_number, address, dob, profile_photo } = req.body;
 
-        if (!full_name || !email || !password || !phone_number || !address) {
+        if (!full_name || !user_name || !email || !password || !phone_number || !address || !dob || !profile_photo) {
             return res.status(400).json({ message: "Please provide all required details to sign up." });
         }
 
-        const existingUser = await signup_user.findOne({ email });
+        const existingUser = await signup_user.findOne({ $or: [{ email }, { user_name }] });
         if (existingUser) {
-            return res.status(400).json({ message: "This email is already registered. Please use a different one." });
+            return res.status(400).json({ message: "This email or username is already registered. Please use a different one." });
         }
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        const newUser = new signup_user({ full_name, email, password: hashedPassword, phone_number, address });
+        const newUser = new signup_user({
+            full_name,
+            user_name,
+            email,
+            password: hashedPassword,
+            phone_number,
+            address,
+            dob,
+            profile_photo,
+        });
         await newUser.save();
 
         res.status(201).json({ message: "Welcome aboard! Your account has been successfully created.", user: newUser });
@@ -34,27 +43,36 @@ exports.signupUser = async (req, res) => {
 // Seller Signup
 exports.signupSeller = async (req, res) => {
     try {
-        const { business_name, full_name, email, password, phone_number, business_address, gst_number } = req.body;
+        const { full_name, user_name, email, password, phone_number, address, dob, profile_photo } = req.body;
 
-        if (!business_name || !full_name || !email || !password || !phone_number || !business_address || !gst_number) {
-            return res.status(400).json({ message: "Please fill in all the required fields to register as a seller." });
+        if (!full_name || !user_name || !email || !password || !phone_number || !address || !dob || !profile_photo) {
+            return res.status(400).json({ message: "Please provide all required details to sign up." });
         }
 
-        const existingUser = await signup_seller.findOne({ email });
+        const existingUser = await signup_seller.findOne({ $or: [{ email }, { user_name }] });
         if (existingUser) {
-            return res.status(400).json({ message: "This email is already associated with an account. Please use another one." });
+            return res.status(400).json({ message: "This email or username is already registered. Please use a different one." });
         }
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        const newSeller = new signup_seller({ business_name, full_name, email, password: hashedPassword, phone_number, business_address, gst_number });
-        await newSeller.save();
+        const newUser = new signup_seller({
+            full_name,
+            user_name,
+            email,
+            password: hashedPassword,
+            phone_number,
+            address,
+            dob,
+            profile_photo,
+        });
+        await newUser.save();
 
-        res.status(201).json({ message: "Congratulations! Your seller account has been created successfully.", seller: newSeller });
+        res.status(201).json({ message: "Welcome aboard! Your account has been successfully created.", user: newUser });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "We encountered an issue while processing your request. Please try again later." });
+        res.status(500).json({ message: "Oops! Something went wrong on our end. Please try again later." });
     }
 };
 

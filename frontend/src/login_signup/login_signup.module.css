@@ -6,13 +6,18 @@ a {
     text-decoration: none !important;
 }
 
+.InputTextarea {
+    resize: none;
+    height: 130px;
+}
+
 .main_body {
     height: 100vh;
 }
 
 .login_form {
     width: 400px;
-    height: 500px;
+    height: 450px;
 }
 
 .login_form_field {
@@ -24,8 +29,8 @@ a {
 }
 
 .signup_user_form {
-    width: 600px;
-    height: 550px;
+    width: 1400px;
+    height: 650px;
 }
 
 .signup_user_form_field {
@@ -50,7 +55,7 @@ a {
 }
 
 .signup_link {
-    width: 600px;
+    width: 1400px;
 }
 
 .custom_file_upload {

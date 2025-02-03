@@ -91,8 +91,8 @@ export default function Login() {
             <div className="position-absolute top-0 end-0 p-3" style={{ zIndex: 1000 }}>
                 <Messages ref={msgs} />
             </div>
-            <form className={`${css['login_form']} border rounded d-flex flex-column justify-content-evenly p-3`} onSubmit={handleSubmit}>
-                <h1 className='text-center'>login</h1>
+            <form className={`${css['login_form']} border rounded d-flex flex-column justify-content-evenly px-3`} onSubmit={handleSubmit}>
+                <h1 className='text-start'>login</h1>
                 <div>
                     <div className={`${css['login_form_field']} d-flex flex-column`}>
                         <label htmlFor="email">Email</label>
@@ -117,7 +117,7 @@ export default function Login() {
                 </div>
                 <div></div>
             </form>
-            <div className={`${css['login_link']} card p-2 py-4 text-center`}>
+            <div className={`${css['login_link']} card p-2 text-start`}>
                 <span>Want to join as a User? <Link to="/signup_user" className="text-primary">Sign up here</Link></span>
                 <span>Looking to sell your products? <Link to="/signup_seller" className="text-primary">Register as a Seller</Link></span>
             </div>
