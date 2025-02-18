@@ -1,0 +1,48 @@
+Backend (Node.js + Express)
+
+1. Initialize the backend:
+mkdir student-management-system && cd student-management-system
+mkdir backend && cd backend
+npm init -y
+
+2. Install dependencies:
+npm install express mongoose cors dotenv nodemon
+
+3. Create the backend structure: 
+backend/
+├── src/
+│   ├── config/
+│   │   ├── db.js
+│   ├── controllers/
+│   │   ├── studentController.js
+│   ├── models/
+│   │   ├── Student.js
+│   ├── routes/
+│   │   ├── studentRoutes.js
+│   ├── app.js
+│   ├── server.js
+├── .env
+├── package.json
+
+
+Frontend (React + Vite)
+
+1. Initialize the frontend:
+cd ..
+npm create vite@latest frontend --template react
+cd frontend
+npm install axios react-router-dom
+
+2. Frontend structure:
+frontend/
+├── src/
+│   ├── components/ (Reusable UI components)
+│   ├── pages/ (Student List, Add, Edit)
+│   ├── services/ (API calls)
+│   ├── App.jsx
+│   ├── main.jsx
+├── public/
+├── index.html
+├── package.json
+├── vite.config.js
+
